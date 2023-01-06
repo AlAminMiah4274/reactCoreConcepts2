@@ -51,18 +51,16 @@ function Counter() {
 
 function ExternalUsers() {
   const [users, setUsers] = useState([]);
-  // console.log(users);
 
   useEffect(() => {
     fetch('https://jsonplaceholder.typicode.com/users')
       .then(res => res.json())
       .then(data => setUsers(data))
-  }, []);
+  }, [])
 
   return (
     <div>
-      <h1>External Users:</h1>
-      <p>{users.length}</p>
+      <h1>External Users: {users.length}</h1>
       {
         users.map(user => <Users name={user.name} email={user.email} city={user.address.city}></Users>)
       }
@@ -72,7 +70,7 @@ function ExternalUsers() {
 
 function Users(props) {
   return (
-    <div style={{ border: '2px solid maroon', backgroundColor: 'lightpink', borderRadius: '10px', margin: '15px' }}>
+    <div style={{ border: '2px solid maroon', margin: '15px', borderRadius: '10px', backgroundColor: 'lightgreen' }}>
       <h3>Name: {props.name}</h3>
       <p>Email: {props.email}</p>
       <p>City: {props.city}</p>
